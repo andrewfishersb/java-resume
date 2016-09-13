@@ -5,8 +5,8 @@
   <h4>$job.getCompany()</h4>
   <ul>
     <li>$job.getDescription()</li>
-    <li>$job.getStartDate()</li>
-    <li>$job.getEndDate()</li>
+    <li>$job.formatDate($job.getStartDate())</li>
+    <li>$job.formatDate($job.getEndDate())</li>
     <li>Job Duration: $job.calculateElapse()</li>
   </ul>
   #end

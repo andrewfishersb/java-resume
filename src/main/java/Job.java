@@ -19,13 +19,17 @@ public class Job {
   }
 
   public String calculateElapse(){
-    String [] start = mStartDate.split("/");
-    String [] end = mEndDate.split("/");
-    LocalDate startDate =  LocalDate.of(Integer.parseInt(start[2]),Integer.parseInt(start[0]),Integer.parseInt(start[1]));
-    LocalDate endDate =  LocalDate.of(Integer.parseInt(end[2]),Integer.parseInt(end[0]),Integer.parseInt(end[1]));
+    String [] start = mStartDate.split("-");
+    String [] end = mEndDate.split("-");
+    LocalDate startDate =  LocalDate.of(Integer.parseInt(start[0]),Integer.parseInt(start[1]),Integer.parseInt(start[2]));
+    LocalDate endDate =  LocalDate.of(Integer.parseInt(end[0]),Integer.parseInt(end[1]),Integer.parseInt(end[2]));
     Period elapse = Period.between(startDate,endDate);
-    // return ChronoUnit.MONTHS.between(startDate,endDate);
-    return "Years: "+ elapse.getYears() + " Months: " + elapse.getMonths();
+    if(elapse.getYears()<1){
+        return "Months: " + elapse.getMonths();
+
+    }else{
+      return "Years: "+ elapse.getYears() + " Months: " + elapse.getMonths();
+    }
   }
 
   public String getTitle() {
@@ -40,11 +44,16 @@ public class Job {
     return mDescription;
   }
 
+
+  public String formatDate(String dateType){
+    String [] dateArray = dateType.split("-");
+    String date = dateArray[1]+"/"+dateArray[2]+"/"+dateArray[0];
+    return date;
+  }
+
   public String getStartDate() {
     return mStartDate;
   }
-
-
 
   public String getEndDate() {
     return mEndDate;
