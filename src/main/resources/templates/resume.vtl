@@ -1,0 +1,17 @@
+<h1>Your Resume:</h1>
+#if($jobs)
+  #foreach($job in $jobs)
+  <h3>$job.getTitle()</h3>
+  <h4>$job.getCompany()</h4>
+  <ul>
+    <li>$job.getDescription()</li>
+    <li>$job.getStartDate()</li>
+    <li>$job.getEndDate()</li>
+    <li>Job Duration: $job.calculateElapse()</li>
+  </ul>
+  #end
+#else
+  Get a job!
+#end
+
+<a href="/">Go Back to Add More</a>
